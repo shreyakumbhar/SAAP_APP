@@ -3,9 +3,13 @@ const express = require('express');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const adminRoutes = require('./routes/admin');
+
 const authMiddleware = require('./middleware/auth');
 
 require('dotenv').config();
+
+const PORT = process.env.PORT || 5000;
+const HOST = '127.0.0.1';
 
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -31,4 +35,4 @@ app.use('/api/auth', authRoutes);
 app.use('/api/user', authMiddleware, userRoutes);
 app.use('/api/admin', authMiddleware, adminRoutes);
 
-app.listen(5000, () => console.log('✅ Server running on http://localhost:5000'));
+app.listen(PORT,HOST, () => console.log('✅ Server running on http://localhost:5000'));
