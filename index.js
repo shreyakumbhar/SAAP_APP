@@ -21,7 +21,9 @@ const app = express();
 
 app.use(express.json());
 
-
+app.get('/', (req, res) => {
+  res.send('<h2> Backend running on port 5000</h2>');
+});
 
 app.use(cors({
   origin: 'http://localhost:3000',
